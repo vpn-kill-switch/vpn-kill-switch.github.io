@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VPN kill switch</title>
+    <link>https://vpn-kill-switch.com/tags/cli/index.xml</link>
+    <description>Recent content on VPN kill switch</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright> </copyright>
+    <atom:link href="https://vpn-kill-switch.com/tags/cli/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>killswitch</title>
+      <link>https://vpn-kill-switch.com/post/killswitch/</link>
+      <pubDate>Sat, 12 Nov 2016 21:15:48 +0100</pubDate>
+      
+      <guid>https://vpn-kill-switch.com/post/killswitch/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;killswitch&lt;/strong&gt; a CLI tool for creating &amp;amp; loading pf rules.&lt;/p&gt;
+
+&lt;p&gt;To install on Mac OS X:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ brew tap vpn-kill-switch/killswitch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ brew install killswitch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Download from &lt;a href=&#34;https://dl.bintray.com/nbari/killswitch/&#34;&gt;https://dl.bintray.com/nbari/killswitch/&lt;/a&gt; or compile from source: &lt;a href=&#34;https://github.com/vpn-kill-switch/killswitch&#34;&gt;https://github.com/vpn-kill-switch/killswitch&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;killswitch&lt;/strong&gt; helps to find the active interfaces and creates a
+&lt;code&gt;.killswitch.pf.conf&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;The current version is very simple it requires to specify the VPN endpoint IP
+&lt;code&gt;-ip&lt;/code&gt; and it can also load the generated rules by specifying option &lt;code&gt;-e&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ killswitch -h
+Usage of killswitch:
+  -e Enable
+        Enable load the pf rules
+  -ip IPv4
+        VPN peer IPv4
+  -v    Print version: 0.1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If using option &lt;code&gt;-e&lt;/code&gt; &lt;a href=&#34;https://en.wikipedia.org/wiki/Sudo&#34;&gt;sudo&lt;/a&gt; may be required:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo killswitch -ip 1.2.3.4 -e
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -8,7 +8,7 @@
 		<meta name="description" content="Block outgoing traffic when VPN connection fails or crashes">
 		<meta name="keywords" content="vpn, kill, switch, network">
 		<meta name="generator" content="Hugo 0.17" />
-		<title> &middot; VPN kill switch</title>
+		<title>killswitch &middot; VPN kill switch</title>
         <link rel="apple-touch-icon" sizes="57x57" href="https://vpn-kill-switch.com/images/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="https://vpn-kill-switch.com/images/apple-icon-60x60.png">
         <link rel="apple-touch-icon" sizes="72x72" href="https://vpn-kill-switch.com/images/apple-icon-72x72.png">
@@ -57,18 +57,56 @@
         <section id="wrapper">
             <article class="post">
                 <header>
-                    <h1></h1>
+                    <h1>killswitch</h1>
                     <h2 class="headline">
                     <br>
+                    
+                    
+                        
+                            <a href="https://vpn-kill-switch.com/tags/cli">cli</a>
+                        
+                            <a href="https://vpn-kill-switch.com/tags/tools">tools</a>
+                        
+                            <a href="https://vpn-kill-switch.com/tags/brew">brew</a>
+                        
+                    
                     
                     </h2>
                 </header>
                 <section id="post-body">
-                    
+                    <p><strong>killswitch</strong> a CLI tool for creating &amp; loading pf rules.</p>
 
-<h1 id="content">content</h1>
+<p>To install on Mac OS X:</p>
 
-<p>content for site vpn-kill-switch.com</p>
+<pre><code>$ brew tap vpn-kill-switch/killswitch
+</code></pre>
+
+<p>Next:</p>
+
+<pre><code>$ brew install killswitch
+</code></pre>
+
+<p>Download from <a href="https://dl.bintray.com/nbari/killswitch/">https://dl.bintray.com/nbari/killswitch/</a> or compile from source: <a href="https://github.com/vpn-kill-switch/killswitch">https://github.com/vpn-kill-switch/killswitch</a></p>
+
+<p><strong>killswitch</strong> helps to find the active interfaces and creates a
+<code>.killswitch.pf.conf</code> file.</p>
+
+<p>The current version is very simple it requires to specify the VPN endpoint IP
+<code>-ip</code> and it can also load the generated rules by specifying option <code>-e</code></p>
+
+<pre><code class="language-sh">$ killswitch -h
+Usage of killswitch:
+  -e Enable
+        Enable load the pf rules
+  -ip IPv4
+        VPN peer IPv4
+  -v    Print version: 0.1.0
+</code></pre>
+
+<p>If using option <code>-e</code> <a href="https://en.wikipedia.org/wiki/Sudo">sudo</a> may be required:</p>
+
+<pre><code>$ sudo killswitch -ip 1.2.3.4 -e
+</code></pre>
 
                 </section>
             </article>
@@ -76,7 +114,7 @@
                 
                     
                 <section id="sharing">
-                    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fvpn-kill-switch.com%2fREADME%2f -  "><span class="icon-twitter"> Tweet</span></a>
+                    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fvpn-kill-switch.com%2fpost%2fkillswitch%2f - killswitch "><span class="icon-twitter"> Tweet</span></a>
 
 <a class="facebook" href="#" onclick="
     window.open(
@@ -92,9 +130,9 @@
             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'vpn-kill-switch';
-    var disqus_identifier = 'https:\/\/vpn-kill-switch.com\/README\/';
-    var disqus_title = '';
-    var disqus_url = 'https:\/\/vpn-kill-switch.com\/README\/';
+    var disqus_identifier = 'https:\/\/vpn-kill-switch.com\/post\/killswitch\/';
+    var disqus_title = 'killswitch';
+    var disqus_url = 'https:\/\/vpn-kill-switch.com\/post\/killswitch\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
