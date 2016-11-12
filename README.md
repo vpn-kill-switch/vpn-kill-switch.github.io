@@ -1,2 +1,1 @@
-# vpn-kill-switch.github.io
-vpn-kill-switch.com
+https://vpn-kill-switch.com
