@@ -29,6 +29,12 @@ to many other operating systems. &lt;a href=&#34;https://en.wikipedia.org/wiki/P
 &lt;p&gt;To create a &lt;strong&gt;kill switch&lt;/strong&gt; using PF, a &lt;a href=&#34;https://www.openbsd.org/faq/pf/&#34;&gt;configuration file&lt;/a&gt;
 needs to be created.&lt;/p&gt;
 
+&lt;blockquote&gt;
+&lt;p&gt;TL;DR
+&lt;a href=&#34;https://vpn-kill-switch.com/post/killswitch/&#34;&gt;killswitch&lt;/a&gt; is a CLI command that can help finding the
+active interfaces, create &amp;amp; load the pf rules.&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;p&gt;Example of a &lt;code&gt;killswitch.pf.conf&lt;/code&gt; configuration file:&lt;/p&gt;
 
 &lt;blockquote&gt;
