@@ -8,7 +8,7 @@
 		<meta name="description" content="Block outgoing traffic when VPN connection fails or crashes">
 		<meta name="keywords" content="vpn, kill, switch, network">
 		<meta name="generator" content="Hugo 0.17" />
-		<title> &middot; VPN kill switch</title>
+		<title>PF macOS &amp; BSD &middot; VPN kill switch</title>
         <link rel="apple-touch-icon" sizes="57x57" href="https://vpn-kill-switch.com/images/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="https://vpn-kill-switch.com/images/apple-icon-60x60.png">
         <link rel="apple-touch-icon" sizes="72x72" href="https://vpn-kill-switch.com/images/apple-icon-72x72.png">
@@ -57,18 +57,143 @@
         <section id="wrapper">
             <article class="post">
                 <header>
-                    <h1></h1>
+                    <h1>PF macOS &amp; BSD</h1>
                     <h2 class="headline">
                     <br>
+                    
+                    
+                        
+                            <a href="https://vpn-kill-switch.com/tags/bsd">BSD</a>
+                        
+                            <a href="https://vpn-kill-switch.com/tags/apple">apple</a>
+                        
+                            <a href="https://vpn-kill-switch.com/tags/macos">macOS</a>
+                        
+                            <a href="https://vpn-kill-switch.com/tags/pf">pf</a>
+                        
+                    
                     
                     </h2>
                 </header>
                 <section id="post-body">
                     
 
-<h1 id="content">content</h1>
+<blockquote>
+<p>PF (Packet Filter, also written pf) is a BSD licensed stateful packet filter,
+a central piece of software for firewalling. It is comparable to netfilter
+(iptables), ipfw and ipfilter. PF was developed for OpenBSD, but has been ported
+to many other operating systems. <a href="https://en.wikipedia.org/wiki/PF_(firewall">https://en.wikipedia.org/wiki/PF_(firewall</a>)</p>
+</blockquote>
 
-<p>content for site vpn-kill-switch.com</p>
+<p>For <a href="https://apple.com/mac/">Mac OS X</a> users PF can be the best option.</p>
+
+<p>To create a <strong>kill switch</strong> using PF, a <a href="https://www.openbsd.org/faq/pf/">configuration file</a>
+needs to be created.</p>
+
+<p>Example of a <code>killswitch.pf.conf</code> configuration file:</p>
+
+<blockquote>
+<p>The file can be creted on the user $HOME directory and have any name.</p>
+</blockquote>
+
+<pre><code class="language-sh">int_en1 = &quot;en1&quot;
+vpn_utun1 = &quot;utun1&quot;
+vpn_ip = &quot;1.2.3.4&quot;
+set block-policy drop
+set ruleset-optimization basic
+set skip on lo0
+block out all
+block in all
+antispoof for $int_en1 inet
+antispoof for $vpn_utun1 inet
+pass out on $int_en1 inet proto icmp all icmp-type 8 code 0
+pass out on $int_en1 proto {tcp, udp} from any to $vpn_ip
+pass out on $vpn_utun1
+</code></pre>
+
+<p>The first 3 lines need to be changed/adjusted based on the running system.</p>
+
+<pre><code class="language-sh">int_en1 = &quot;en1&quot;     # active interface
+vpn_utun1 = &quot;utun1&quot; # VPN interface
+vpn_ip = &quot;1.2.3.4&quot;  # VPN peer IP
+</code></pre>
+
+<p>After editing the <code>killswitch.pf.conf</code> file, the PF rules can be loaded by
+running:</p>
+
+<pre><code>$ sudo pfctl -Fa -f ~/killswitch.pf.conf -e
+</code></pre>
+
+<p>To disable:</p>
+
+<pre><code>$ sudo pfctl -d
+</code></pre>
+
+<p>To load your system defaults (no kill switch)</p>
+
+<pre><code>$ sudo pfctl -Fa -f /etc/pf.conf -e
+</code></pre>
+
+<p>In some cases where the VPN peer IP is random, the VPN needs to be connected
+first and later load the <strong>kill switch</strong> PF rules, otherwise wont be possible to
+connect.</p>
+
+<h1 id="active-interface">active interface</h1>
+
+<p>In this example <code>int_en1</code> is the active interface (WiFi) to find the
+active interfaces run the following command within a terminal:</p>
+
+<pre><code class="language-sh">$ route get 0.0.0.0 2&gt;/dev/null | awk '/interface: / {print $2}';
+</code></pre>
+
+<p>or</p>
+
+<pre><code class="language-sh">$ ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'
+</code></pre>
+
+<p>This commands can give more information:</p>
+
+<pre><code class="language-sh">$ networksetup -listnetworkserviceorder
+</code></pre>
+
+<pre><code class="language-sh">$ scutil --dns
+</code></pre>
+
+<h1 id="vpn-interface">VPN interface</h1>
+
+<p>After connecting to the VPN, by running the command <code>ifconfig -a</code> and
+searching for <code>POINTOPOINT</code>, could help to find the interface used by the VPN:</p>
+
+<pre><code class="language-sh">$ ifconfig -a | grep -i POINTOPOINT
+gif0: flags=8010&lt;POINTOPOINT,MULTICAST&gt; mtu 1280
+utun0: flags=8051&lt;UP,POINTOPOINT,RUNNING,MULTICAST&gt; mtu 2000
+utun1: flags=8051&lt;UP,POINTOPOINT,RUNNING,MULTICAST&gt; mtu 1500
+</code></pre>
+
+<p>In this example there are 3 interfaces, but in many cases only 1 will be active
+and with an assigned <a href="https://en.wikipedia.org/wiki/IPv4">IPv4</a>, by using the
+command <code>ifconfig &lt;interface_name&gt;&gt;</code> this can be found, example:</p>
+
+<pre><code class="language-sh">$ ifconfig utun1
+utun1: flags=8051&lt;UP,POINTOPOINT,RUNNING,MULTICAST&gt; mtu 1500
+	inet 172.21.21.233 --&gt; 172.21.21.233 netmask 0xfffffe00
+</code></pre>
+
+<h1 id="vpn-peer-ip">VPN PEER IP</h1>
+
+<p>This is the IP of the VPN server providing the service, after connecting to the
+VPN many apps display this IP:</p>
+
+<p><img src="/img/peerIP.jpg" alt="peerIP" /></p>
+
+<p>Once knowing the active interface this can be double checked by using the
+command <code>netstat</code>, example:</p>
+
+<pre><code class="language-sh">$ netstat -rna -f inet | grep en1
+default            192.168.1.1        UGSc            7        2     en1
+143.255.56.99/32   192.168.1.1        UGSc            2        0     en1
+143.255.56.99      192.168.1.1        UGHWIi          2     5239     en1
+</code></pre>
 
                 </section>
             </article>
@@ -76,7 +201,7 @@
                 
                     
                 <section id="sharing">
-                    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fvpn-kill-switch.com%2fREADME%2f -  "><span class="icon-twitter"> Tweet</span></a>
+                    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fvpn-kill-switch.com%2fpost%2fpf%2f - PF%20macOS%20%26%20BSD "><span class="icon-twitter"> Tweet</span></a>
 
 <a class="facebook" href="#" onclick="
     window.open(
@@ -92,9 +217,9 @@
             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'vpn-kill-switch';
-    var disqus_identifier = 'https:\/\/vpn-kill-switch.com\/README\/';
-    var disqus_title = '';
-    var disqus_url = 'https:\/\/vpn-kill-switch.com\/README\/';
+    var disqus_identifier = 'https:\/\/vpn-kill-switch.com\/post\/pf\/';
+    var disqus_title = 'PF macOS \x26 BSD';
+    var disqus_url = 'https:\/\/vpn-kill-switch.com\/post\/pf\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

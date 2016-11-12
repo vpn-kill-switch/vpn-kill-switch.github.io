@@ -2,13 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VPN kill switch</title>
-    <link>https://vpn-kill-switch.com/index.xml</link>
+    <link>https://vpn-kill-switch.com/tags/macos/index.xml</link>
     <description>Recent content on VPN kill switch</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright> </copyright>
-    <lastBuildDate>Sat, 12 Nov 2016 16:24:58 +0100</lastBuildDate>
-    <atom:link href="https://vpn-kill-switch.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vpn-kill-switch.com/tags/macos/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>PF macOS &amp; BSD</title>
@@ -134,58 +133,6 @@ default            192.168.1.1        UGSc            7        2     en1
 143.255.56.99/32   192.168.1.1        UGSc            2        0     en1
 143.255.56.99      192.168.1.1        UGHWIi          2     5239     en1
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://vpn-kill-switch.com/about/</link>
-      <pubDate>Sat, 12 Nov 2016 15:19:37 +0100</pubDate>
-      
-      <guid>https://vpn-kill-switch.com/about/</guid>
-      <description>
-
-&lt;h1 id=&#34;what-is-a-vpn-kill-switch&#34;&gt;What is a VPN kill switch?&lt;/h1&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;A kill switch, also known as an emergency stop or e-stop, is a safety mechanism used to shut off a device or machinery in an emergency situation in which it cannot be shut down in the usual manner. &lt;a href=&#34;https://en.wikipedia.org/wiki/Kill_switch&#34;&gt;https://en.wikipedia.org/wiki/Kill_switch&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;A &lt;strong&gt;VPN Kill-Switch&lt;/strong&gt; is a critical piece of your VPN security solution. Also
-known as an Internet Kill Switch, this will make sure that your true
-&lt;a href=&#34;http://checkip.amazonaws.com/&#34;&gt;IP address&lt;/a&gt; is never exposed online in the
-event of a dropped VPN connection.&lt;/p&gt;
-
-&lt;p&gt;Some VPN providers offer this as feature that in theory automatically &amp;ldquo;kills&amp;rdquo;
-your internet connection if the VPN fails or get disconnected, but if the
-application crashes or quit unexpectedly, high are the changes that the
-&lt;strong&gt;kill-switch&lt;/strong&gt; will never be used and therefore your traffic / IP address become
-exposed.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://vpn-kill-switch.com/img/ipvanish-vpn-quit-unexpectedly.png&#34; alt=&#34;ipvanish&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;There are many VPN providers the difference is mainly the price, but when it
-comes to security it is better to use a &lt;strong&gt;kill switch&lt;/strong&gt; at an operating system
-level rather than depending on an APP that eventually may fail or crash leaving
-you vulnerable.&lt;/p&gt;
-
-&lt;p&gt;The goal of this site is to share best practices about how to implement,
-create a &lt;strong&gt;kill switch&lt;/strong&gt; not depending on any VPN provider/application so it
-doesn&amp;rsquo;t mater if the VPN drops crashes you will not be vulnerable.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://vpn-kill-switch.com/README/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://vpn-kill-switch.com/README/</guid>
-      <description>
-
-&lt;h1 id=&#34;content&#34;&gt;content&lt;/h1&gt;
-
-&lt;p&gt;content for site vpn-kill-switch.com&lt;/p&gt;
 </description>
     </item>
     
