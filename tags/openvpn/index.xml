@@ -58,6 +58,48 @@ bellow the devices you would like to route all their traffic thought the VPN:&lt
 
 &lt;p&gt;&lt;img src=&#34;https://vpn-kill-switch.com/img/asus-jffs-custom-scripts.png&#34; alt=&#34;jffs custom scripts&#34; /&gt;&lt;/p&gt;
 
+&lt;h1 id=&#34;openvpn-event&#34;&gt;openvpn-event&lt;/h1&gt;
+
+&lt;p&gt;Via SSH login to your router and edit/create the file &lt;code&gt;/jffs/scripts/openvpn-event&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/sh
+
+sleep 2
+
+for i in /proc/sys/net/ipv4/conf/*/rp_filter ; do
+  echo 0 &amp;gt; $i
+done
+
+ip route flush table 100
+ip route del default table 100
+ip rule del fwmark 1 table 100
+ip route flush cache
+iptables -t mangle -F PREROUTING
+
+ip route show table main | grep -Ev ^default | grep -Ev tun11\
+  | while read ROUTE ; do
+      ip route add table 100 $ROUTE
+done
+
+ip route add default table 100 via $(nvram get wan_gateway)
+ip rule add fwmark 1 table 100
+ip route flush cache
+
+iptables -t mangle -A PREROUTING -i br0 -j MARK --set-mark 1
+
+iptables -t mangle -A PREROUTING -i br0 -m iprange --src-range 192.168.x.xxx -j MARK --set-mark 0
+
+exit 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Each device has the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;iptables -t mangle -A PREROUTING -i br0 -m iprange --src-range 192.168.x.xxx -j MARK --set-mark 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All you need to do is replace &lt;code&gt;192.168.1.xxx&lt;/code&gt; with the actual IP address of each
+of the devices you want to include to the VPN.&lt;/p&gt;
+
 &lt;h1 id=&#34;firewall-start&#34;&gt;firewall-start&lt;/h1&gt;
 
 &lt;p&gt;Via SSH login to your router and edit/create the file &lt;code&gt;/jffs/scripts/firewall-start&lt;/code&gt;&lt;/p&gt;
@@ -68,17 +110,13 @@ sleep 4
 
 iptables -I FORWARD -i br0 -o tun11 -j ACCEPT
 iptables -I FORWARD -i tun11 -o br0 -j ACCEPT
-iptables -I FORWARD ! -o tun11 -s XXX.XXX.XXX.XXX -j DROP
-iptables -I FORWARD ! -o tun11 -s XXX.XXX.XXX.XXX -j DROP
+iptables -I FORWARD ! -o tun11 -s 192.168.1.X -j DROP
+iptables -I FORWARD ! -o tun11 -s 192.168.1.Y -j DROP
 iptables -I INPUT -i tun11 -j REJECT
 iptables -t nat -A POSTROUTING -o tun11 -j MASQUERADE
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Replace the XXX.XXX.XXX.XXX with your IP&amp;rsquo;s in our example it would be:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;iptables -I FORWARD ! -o tun11 -s 192.168.1.2 -j DROP
-iptables -I FORWARD ! -o tun11 -s 192.168.1.13 -j DROP
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Replace the &lt;code&gt;192.168.1.X&lt;/code&gt; with your IP&amp;rsquo;s.&lt;/p&gt;
 
 &lt;p&gt;To test, disconnect the VPN and verify that the selected devices to use the VPN,
 are not available to connect, re-connect the VPN and check the IP using any of this sites:&lt;/p&gt;
