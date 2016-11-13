@@ -233,9 +233,66 @@ doesn&amp;rsquo;t mater if the VPN drops the connection or crashes you will not 
       <guid>https://vpn-kill-switch.com/README/</guid>
       <description>
 
-&lt;h1 id=&#34;content&#34;&gt;content&lt;/h1&gt;
+&lt;h1 id=&#34;how-to-contribute&#34;&gt;How to contribute&lt;/h1&gt;
 
-&lt;p&gt;content for site vpn-kill-switch.com&lt;/p&gt;
+&lt;p&gt;You can contribute in multiple ways, submiting code, creating a post, update
+existing posts, etc.&lt;/p&gt;
+
+&lt;h2 id=&#34;creating-updating-posts&#34;&gt;Creating &amp;amp; updating posts&lt;/h2&gt;
+
+&lt;p&gt;You can clone the full site by doing this:&lt;/p&gt;
+
+&lt;p&gt;First install HUGO: &lt;a href=&#34;https://gohugo.io/overview/installing/&#34;&gt;https://gohugo.io/overview/installing/&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ brew update &amp;amp;&amp;amp; brew install hugo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Clone the template repository:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git clone git@github.com:vpn-kill-switch/template.git $HOME/vpn-kill-switch.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Clone the content for the site as a submodule:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd $HOME/vpn-kill-switch.com
+$ git submodule add -b master git@github.com:vpn-kill-switch/content.git content
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Symlink the static directory so images can be displayed:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd $HOME/vpn-kill-switch.com
+$ ln -s content/static .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Start the server:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd $HOME/vpn-kill-switch.com
+$ hugo -w server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create a post:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hugo new post/example.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Preview:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ open http://localhost:1313/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;pull-request&#34;&gt;pull request&lt;/h2&gt;
+
+&lt;p&gt;After adding your post or making any changes to the content repository please
+create a pull request, more info about how to do this can be found here:
+&lt;a href=&#34;https://help.github.com/articles/creating-a-pull-request/&#34;&gt;https://help.github.com/articles/creating-a-pull-request/&lt;/a&gt; Please create a
+pull-request for all your changes in order to review them and&lt;/p&gt;
+
+&lt;h1 id=&#34;contribute-with-code&#34;&gt;Contribute with code&lt;/h1&gt;
+
+&lt;p&gt;The best for now is to create a repository in
+your own account on Github and notify via an
+&lt;a href=&#34;https://github.com/vpn-kill-switch/vpn-kill-switch.github.io/issues&#34;&gt;issue&lt;/a&gt;
+when it is ready.&lt;/p&gt;
 </description>
     </item>
     
