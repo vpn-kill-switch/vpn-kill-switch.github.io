@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VPN kill switch</title>
+    <link>https://vpn-kill-switch.com/tags/asus/index.xml</link>
+    <description>Recent content on VPN kill switch</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright> </copyright>
+    <atom:link href="https://vpn-kill-switch.com/tags/asus/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>asuswrt merlin</title>
+      <link>https://vpn-kill-switch.com/post/asuswrt-merlin/</link>
+      <pubDate>Sun, 13 Nov 2016 17:12:38 +0100</pubDate>
+      
+      <guid>https://vpn-kill-switch.com/post/asuswrt-merlin/</guid>
+      <description>
+
+&lt;h1 id=&#34;kill-switch-on-asus-routers-asuswrt-merlin&#34;&gt;Kill-switch on ASUS routers asuswrt-merlin&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/RMerl/asuswrt-merlin&#34;&gt;asuswrt-merlin&lt;/a&gt; is an enhanced version
+of Asuswrt - the firmware used by all recent Asus routers.&lt;/p&gt;
+
+&lt;p&gt;At this time, the supported devices are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;RT-N66U&lt;/li&gt;
+&lt;li&gt;RT-AC66U&lt;/li&gt;
+&lt;li&gt;RT-AC56U&lt;/li&gt;
+&lt;li&gt;RT-AC68U &amp;amp; RT-AC68P (including revision C1)&lt;/li&gt;
+&lt;li&gt;RT-AC87U&lt;/li&gt;
+&lt;li&gt;RT-AC3200&lt;/li&gt;
+&lt;li&gt;RT-AC88U&lt;/li&gt;
+&lt;li&gt;RT-AC3100&lt;/li&gt;
+&lt;li&gt;RT-AC5300&lt;/li&gt;
+&lt;li&gt;RT-AC1900 &amp;amp; RT-AC1900P&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Firmware builds can be downloaded from the official download site:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://asuswrt.lostrealm.ca/download&#34;&gt;https://asuswrt.lostrealm.ca/download&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;setup&#34;&gt;Setup&lt;/h1&gt;
+
+&lt;p&gt;On the VPN/OpenVPN settings, after configuring a client, set the option
+&lt;code&gt;Firewall&lt;/code&gt; to &lt;code&gt;custom&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://vpn-kill-switch.com/img/asus-openvpn-firewall.jpg&#34; alt=&#34;custom firewall&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the &lt;code&gt;Redirect Internet traffic&lt;/code&gt; select the option &lt;code&gt;Policy Rules&lt;/code&gt; and add
+bellow the devices you would like to route all their traffic thought the VPN:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://vpn-kill-switch.com/img/asus-openvpn-policy-rules.png&#34; alt=&#34;policy rules&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Enable the option &lt;code&gt;Enable JFFS custom scripts and configs&lt;/code&gt; located in
+&lt;a href=&#34;http://192.168.1.1/Advanced_System_Content.asp&#34;&gt;Administration/System&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://vpn-kill-switch.com/img/asus-jffs-custom-scripts.png&#34; alt=&#34;jffs custom scripts&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;firewall-start&#34;&gt;firewall-start&lt;/h1&gt;
+
+&lt;p&gt;Via SSH login to your router and edit/create the file &lt;code&gt;/jffs/scripts/firewall-start&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/sh
+
+sleep 4
+
+iptables -I FORWARD -i br0 -o tun11 -j ACCEPT
+iptables -I FORWARD -i tun11 -o br0 -j ACCEPT
+iptables -I FORWARD ! -o tun11 -s XXX.XXX.XXX.XXX -j DROP
+iptables -I FORWARD ! -o tun11 -s XXX.XXX.XXX.XXX -j DROP
+iptables -I INPUT -i tun11 -j REJECT
+iptables -t nat -A POSTROUTING -o tun11 -j MASQUERADE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Replace the XXX.XXX.XXX.XXX with your IP&amp;rsquo;s in our example it would be:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;iptables -I FORWARD ! -o tun11 -s 192.168.1.2 -j DROP
+iptables -I FORWARD ! -o tun11 -s 192.168.1.13 -j DROP
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To test, disconnect the VPN and verify that the selected devices to use the VPN,
+are not available to connect, re-connect the VPN and check the IP using any of this sites:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dnsleaktest.com/&#34;&gt;https://www.dnsleaktest.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://geoip.hidemyass.com/&#34;&gt;http://geoip.hidemyass.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tuip.info&#34;&gt;https://tuip.info&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://checkip.amazonaws.com/&#34;&gt;http://checkip.amazonaws.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/oBLS7Wkn0C4&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
+ &lt;/div&gt;
+
+
+&lt;hr /&gt;
+
+&lt;p&gt;More info: &lt;a href=&#34;https://github.com/RMerl/asuswrt-merlin/wiki/Policy-based-routing-(manual-method&#34;&gt;https://github.com/RMerl/asuswrt-merlin/wiki/Policy-based-routing-(manual-method&lt;/a&gt;)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

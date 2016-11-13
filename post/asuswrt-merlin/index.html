@@ -8,7 +8,7 @@
 		<meta name="description" content="Block outgoing traffic when VPN connection fails or crashes">
 		<meta name="keywords" content="vpn, kill, switch, network">
 		<meta name="generator" content="Hugo 0.17" />
-		<title>About &middot; VPN kill switch</title>
+		<title>asuswrt merlin &middot; VPN kill switch</title>
         <link rel="apple-touch-icon" sizes="57x57" href="https://vpn-kill-switch.com/images/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="https://vpn-kill-switch.com/images/apple-icon-60x60.png">
         <link rel="apple-touch-icon" sizes="72x72" href="https://vpn-kill-switch.com/images/apple-icon-72x72.png">
@@ -44,6 +44,10 @@
 	
 
 	
+		<a href="https://github.com/vpn-kill-switch/">Github</a>
+        <a href="https://vpn-kill-switch.com/README">Contribute</a>
+		<a href='https://vpn-kill-switch.com/about'>About</a>
+	
 
 	
 	<a class="cta" href="https://vpn-kill-switch.com/index.xml">Subscribe</a>
@@ -53,42 +57,111 @@
         <section id="wrapper">
             <article class="post">
                 <header>
-                    <h1>About</h1>
+                    <h1>asuswrt merlin</h1>
                     <h2 class="headline">
                     <br>
+                    
+                    
+                        
+                            <a href="https://vpn-kill-switch.com/tags/asus">asus</a>
+                        
+                            <a href="https://vpn-kill-switch.com/tags/merlin">merlin</a>
+                        
+                            <a href="https://vpn-kill-switch.com/tags/routers">routers</a>
+                        
+                            <a href="https://vpn-kill-switch.com/tags/openvpn">openvpn</a>
+                        
+                    
                     
                     </h2>
                 </header>
                 <section id="post-body">
                     
 
-<h1 id="what-is-a-vpn-kill-switch">What is a VPN kill switch?</h1>
+<h1 id="kill-switch-on-asus-routers-asuswrt-merlin">Kill-switch on ASUS routers asuswrt-merlin</h1>
 
-<blockquote>
-<p>A kill switch, also known as an emergency stop or e-stop, is a safety mechanism used to shut off a device or machinery in an emergency situation in which it cannot be shut down in the usual manner. <a href="https://en.wikipedia.org/wiki/Kill_switch">https://en.wikipedia.org/wiki/Kill_switch</a></p>
-</blockquote>
+<p><a href="https://github.com/RMerl/asuswrt-merlin">asuswrt-merlin</a> is an enhanced version
+of Asuswrt - the firmware used by all recent Asus routers.</p>
 
-<p>A <strong>VPN Kill-Switch</strong> is a critical piece of your VPN security solution. Also
-known as an Internet Kill Switch, this will make sure that your true
-<a href="http://checkip.amazonaws.com/">IP address</a> is never exposed online in the
-event of a dropped VPN connection.</p>
+<p>At this time, the supported devices are:</p>
 
-<p>Some VPN providers offer this as feature that in theory automatically &ldquo;kills&rdquo;
-your internet connection if the VPN fails or get disconnected, but if the
-application crashes or quit unexpectedly, high are the changes that the
-<strong>kill-switch</strong> will never be used and therefore your traffic / IP address become
-exposed.</p>
+<ul>
+<li>RT-N66U</li>
+<li>RT-AC66U</li>
+<li>RT-AC56U</li>
+<li>RT-AC68U &amp; RT-AC68P (including revision C1)</li>
+<li>RT-AC87U</li>
+<li>RT-AC3200</li>
+<li>RT-AC88U</li>
+<li>RT-AC3100</li>
+<li>RT-AC5300</li>
+<li>RT-AC1900 &amp; RT-AC1900P</li>
+</ul>
 
-<p><img src="/img/ipvanish-vpn-quit-unexpectedly.png" alt="ipvanish" /></p>
+<p>Firmware builds can be downloaded from the official download site:</p>
 
-<p>There are many VPN providers the difference is mainly the price, but when it
-comes to security it is better to use a <strong>kill switch</strong> at an operating system
-level rather than depending on an APP that eventually may fail or crash leaving
-you vulnerable.</p>
+<p><a href="https://asuswrt.lostrealm.ca/download">https://asuswrt.lostrealm.ca/download</a></p>
 
-<p>The goal of this site is to share best practices about how to implement,
-create a <strong>kill switch</strong> not depending on any VPN provider/application so it
-doesn&rsquo;t mater if the VPN drops the connection or crashes you will not be vulnerable.</p>
+<h1 id="setup">Setup</h1>
+
+<p>On the VPN/OpenVPN settings, after configuring a client, set the option
+<code>Firewall</code> to <code>custom</code>:</p>
+
+<p><img src="/img/asus-openvpn-firewall.jpg" alt="custom firewall" /></p>
+
+<p>On the <code>Redirect Internet traffic</code> select the option <code>Policy Rules</code> and add
+bellow the devices you would like to route all their traffic thought the VPN:</p>
+
+<p><img src="/img/asus-openvpn-policy-rules.png" alt="policy rules" /></p>
+
+<p>Enable the option <code>Enable JFFS custom scripts and configs</code> located in
+<a href="http://192.168.1.1/Advanced_System_Content.asp">Administration/System</a></p>
+
+<p><img src="/img/asus-jffs-custom-scripts.png" alt="jffs custom scripts" /></p>
+
+<h1 id="firewall-start">firewall-start</h1>
+
+<p>Via SSH login to your router and edit/create the file <code>/jffs/scripts/firewall-start</code></p>
+
+<pre><code class="language-sh">#!/bin/sh
+
+sleep 4
+
+iptables -I FORWARD -i br0 -o tun11 -j ACCEPT
+iptables -I FORWARD -i tun11 -o br0 -j ACCEPT
+iptables -I FORWARD ! -o tun11 -s XXX.XXX.XXX.XXX -j DROP
+iptables -I FORWARD ! -o tun11 -s XXX.XXX.XXX.XXX -j DROP
+iptables -I INPUT -i tun11 -j REJECT
+iptables -t nat -A POSTROUTING -o tun11 -j MASQUERADE
+</code></pre>
+
+<p>Replace the XXX.XXX.XXX.XXX with your IP&rsquo;s in our example it would be:</p>
+
+<pre><code>iptables -I FORWARD ! -o tun11 -s 192.168.1.2 -j DROP
+iptables -I FORWARD ! -o tun11 -s 192.168.1.13 -j DROP
+</code></pre>
+
+<p>To test, disconnect the VPN and verify that the selected devices to use the VPN,
+are not available to connect, re-connect the VPN and check the IP using any of this sites:</p>
+
+<ul>
+<li><a href="https://www.dnsleaktest.com/">https://www.dnsleaktest.com/</a></li>
+<li><a href="http://geoip.hidemyass.com/">http://geoip.hidemyass.com/</a></li>
+<li><a href="https://tuip.info">https://tuip.info</a></li>
+<li><a href="http://checkip.amazonaws.com/">http://checkip.amazonaws.com/</a></li>
+</ul>
+
+<hr />
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/oBLS7Wkn0C4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0"></iframe>
+ </div>
+
+
+<hr />
+
+<p>More info: <a href="https://github.com/RMerl/asuswrt-merlin/wiki/Policy-based-routing-(manual-method">https://github.com/RMerl/asuswrt-merlin/wiki/Policy-based-routing-(manual-method</a>)</p>
 
                 </section>
             </article>
@@ -96,7 +169,7 @@ doesn&rsquo;t mater if the VPN drops the connection or crashes you will not be v
                 
                     
                 <section id="sharing">
-                    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fvpn-kill-switch.com%2fabout%2f - About "><span class="icon-twitter"> Tweet</span></a>
+                    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fvpn-kill-switch.com%2fpost%2fasuswrt-merlin%2f - asuswrt%20merlin "><span class="icon-twitter"> Tweet</span></a>
 
 <a class="facebook" href="#" onclick="
     window.open(
@@ -112,9 +185,9 @@ doesn&rsquo;t mater if the VPN drops the connection or crashes you will not be v
             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'vpn-kill-switch';
-    var disqus_identifier = 'https:\/\/vpn-kill-switch.com\/about\/';
-    var disqus_title = 'About';
-    var disqus_url = 'https:\/\/vpn-kill-switch.com\/about\/';
+    var disqus_identifier = 'https:\/\/vpn-kill-switch.com\/post\/asuswrt-merlin\/';
+    var disqus_title = 'asuswrt merlin';
+    var disqus_url = 'https:\/\/vpn-kill-switch.com\/post\/asuswrt-merlin\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
