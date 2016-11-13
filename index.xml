@@ -221,7 +221,7 @@ you vulnerable.&lt;/p&gt;
 
 &lt;p&gt;The goal of this site is to share best practices about how to implement,
 create a &lt;strong&gt;kill switch&lt;/strong&gt; not depending on any VPN provider/application so it
-doesn&amp;rsquo;t mater if the VPN drops crashes you will not be vulnerable.&lt;/p&gt;
+doesn&amp;rsquo;t mater if the VPN drops the connection or crashes you will not be vulnerable.&lt;/p&gt;
 </description>
     </item>
     
