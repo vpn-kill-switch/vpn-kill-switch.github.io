@@ -17,6 +17,9 @@
       <guid>https://vpn-kill-switch.com/post/pf/</guid>
       <description>
 
+&lt;p&gt;For &lt;a href=&#34;https://apple.com/mac/&#34;&gt;Mac OS X&lt;/a&gt; &amp;amp; BSD users PF can be the best option to create
+a &lt;strong&gt;kill switch&lt;/strong&gt;.&lt;/p&gt;
+
 &lt;blockquote&gt;
 &lt;p&gt;PF (Packet Filter, also written pf) is a BSD licensed stateful packet filter,
 a central piece of software for firewalling. It is comparable to netfilter
@@ -24,16 +27,13 @@ a central piece of software for firewalling. It is comparable to netfilter
 to many other operating systems. &lt;a href=&#34;https://en.wikipedia.org/wiki/PF_(firewall&#34;&gt;https://en.wikipedia.org/wiki/PF_(firewall&lt;/a&gt;)&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;For &lt;a href=&#34;https://apple.com/mac/&#34;&gt;Mac OS X&lt;/a&gt; users PF can be the best option.&lt;/p&gt;
+&lt;p&gt;To create a &lt;strong&gt;kill switch&lt;/strong&gt; using PF, a &lt;a href=&#34;https://www.openbsd.org/faq/pf/&#34;&gt;configuration file&lt;/a&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;TL;DR
 &lt;a href=&#34;https://vpn-kill-switch.com/post/killswitch/&#34;&gt;killswitch&lt;/a&gt; is a CLI command that can help finding the
-active interfaces, create &amp;amp; load the pf rules.&lt;/p&gt;
+active interfaces, create and load pf rules.&lt;/p&gt;
 &lt;/blockquote&gt;
-
-&lt;p&gt;To create a &lt;strong&gt;kill switch&lt;/strong&gt; using PF, a &lt;a href=&#34;https://www.openbsd.org/faq/pf/&#34;&gt;configuration file&lt;/a&gt;
-needs to be created.&lt;/p&gt;
 
 &lt;p&gt;Example of a &lt;code&gt;killswitch.pf.conf&lt;/code&gt; configuration file:&lt;/p&gt;
 
