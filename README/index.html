@@ -82,24 +82,24 @@ existing posts, etc.</p>
 
 <p>Clone the template repository:</p>
 
-<pre><code>$ git clone git@github.com:vpn-kill-switch/template.git $HOME/vpn-kill-switch.com
+<pre><code class="language-sh">$ git clone git@github.com:vpn-kill-switch/template.git $HOME/vpn-kill-switch.com
 </code></pre>
 
 <p>Clone the content for the site as a submodule:</p>
 
-<pre><code>$ cd $HOME/vpn-kill-switch.com
+<pre><code class="language-sh">$ cd $HOME/vpn-kill-switch.com
 $ git submodule add -b master git@github.com:vpn-kill-switch/content.git content
 </code></pre>
 
 <p>Symlink the static directory so images can be displayed:</p>
 
-<pre><code>$ cd $HOME/vpn-kill-switch.com
+<pre><code class="language-sh">$ cd $HOME/vpn-kill-switch.com
 $ ln -s content/static .
 </code></pre>
 
 <p>Start the server:</p>
 
-<pre><code>$ cd $HOME/vpn-kill-switch.com
+<pre><code class="language-sh">$ cd $HOME/vpn-kill-switch.com
 $ hugo -w server
 </code></pre>
 
@@ -110,7 +110,7 @@ $ hugo -w server
 
 <p>Preview:</p>
 
-<pre><code>$ open http://localhost:1313/
+<pre><code class="language-sh">$ open http://localhost:1313/
 </code></pre>
 
 <h2 id="pull-request">pull request</h2>

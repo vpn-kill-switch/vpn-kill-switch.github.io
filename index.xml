@@ -249,24 +249,24 @@ existing posts, etc.&lt;/p&gt;
 
 &lt;p&gt;Clone the template repository:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ git clone git@github.com:vpn-kill-switch/template.git $HOME/vpn-kill-switch.com
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ git clone git@github.com:vpn-kill-switch/template.git $HOME/vpn-kill-switch.com
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Clone the content for the site as a submodule:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd $HOME/vpn-kill-switch.com
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd $HOME/vpn-kill-switch.com
 $ git submodule add -b master git@github.com:vpn-kill-switch/content.git content
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Symlink the static directory so images can be displayed:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd $HOME/vpn-kill-switch.com
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd $HOME/vpn-kill-switch.com
 $ ln -s content/static .
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Start the server:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd $HOME/vpn-kill-switch.com
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd $HOME/vpn-kill-switch.com
 $ hugo -w server
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -277,7 +277,7 @@ $ hugo -w server
 
 &lt;p&gt;Preview:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ open http://localhost:1313/
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ open http://localhost:1313/
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;pull-request&#34;&gt;pull request&lt;/h2&gt;
