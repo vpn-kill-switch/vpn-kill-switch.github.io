@@ -60,8 +60,10 @@ Usage of killswitch:
       <guid>https://vpn-kill-switch.com/post/pf/</guid>
       <description>
 
-&lt;p&gt;For &lt;a href=&#34;https://apple.com/mac/&#34;&gt;Mac OS X&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://en.wikipedia.org/wiki/Berkeley_Software_Distribution&#34;&gt;BSD&lt;/a&gt;
-users PF can be the best option to create a &lt;strong&gt;kill switch&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;For &lt;a href=&#34;https://apple.com/mac/&#34;&gt;Mac OS X&lt;/a&gt; &amp;amp;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Berkeley_Software_Distribution&#34;&gt;BSD&lt;/a&gt;
+users &lt;a href=&#34;https://www.freebsd.org/doc/handbook/firewalls-pf.html&#34;&gt;PF&lt;/a&gt;
+can be the best option to create a &lt;strong&gt;kill switch&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;PF (Packet Filter, also written pf) is a BSD licensed stateful packet filter,
