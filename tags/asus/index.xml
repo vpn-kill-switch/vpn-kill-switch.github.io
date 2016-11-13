@@ -58,48 +58,6 @@ bellow the devices you would like to route all their traffic thought the VPN:&lt
 
 &lt;p&gt;&lt;img src=&#34;https://vpn-kill-switch.com/img/asus-jffs-custom-scripts.png&#34; alt=&#34;jffs custom scripts&#34; /&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;openvpn-event&#34;&gt;openvpn-event&lt;/h1&gt;
-
-&lt;p&gt;Via SSH login to your router and edit/create the file &lt;code&gt;/jffs/scripts/openvpn-event&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/sh
-
-sleep 2
-
-for i in /proc/sys/net/ipv4/conf/*/rp_filter ; do
-  echo 0 &amp;gt; $i
-done
-
-ip route flush table 100
-ip route del default table 100
-ip rule del fwmark 1 table 100
-ip route flush cache
-iptables -t mangle -F PREROUTING
-
-ip route show table main | grep -Ev ^default | grep -Ev tun11\
-  | while read ROUTE ; do
-      ip route add table 100 $ROUTE
-done
-
-ip route add default table 100 via $(nvram get wan_gateway)
-ip rule add fwmark 1 table 100
-ip route flush cache
-
-iptables -t mangle -A PREROUTING -i br0 -j MARK --set-mark 1
-
-iptables -t mangle -A PREROUTING -i br0 -m iprange --src-range 192.168.x.xxx -j MARK --set-mark 0
-
-exit 1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Each device has the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;iptables -t mangle -A PREROUTING -i br0 -m iprange --src-range 192.168.x.xxx -j MARK --set-mark 0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;All you need to do is replace &lt;code&gt;192.168.1.xxx&lt;/code&gt; with the actual IP address of each
-of the devices you want to include to the VPN.&lt;/p&gt;
-
 &lt;h1 id=&#34;firewall-start&#34;&gt;firewall-start&lt;/h1&gt;
 
 &lt;p&gt;Via SSH login to your router and edit/create the file &lt;code&gt;/jffs/scripts/firewall-start&lt;/code&gt;&lt;/p&gt;
