@@ -171,13 +171,13 @@ sleep 4
 
 iptables -I FORWARD -i br0 -o tun11 -j ACCEPT
 iptables -I FORWARD -i tun11 -o br0 -j ACCEPT
-iptables -I FORWARD ! -o tun11 -s 192.168.1.X -j DROP
-iptables -I FORWARD ! -o tun11 -s 192.168.1.Y -j DROP
+iptables -I FORWARD ! -o tun11 -s 192.168.xx.xxx -j DROP
+iptables -I FORWARD ! -o tun11 -s 192.168.xx.xxx -j DROP
 iptables -I INPUT -i tun11 -j REJECT
 iptables -t nat -A POSTROUTING -o tun11 -j MASQUERADE
 </code></pre>
 
-<p>Replace the <code>192.168.1.X</code> with your IP&rsquo;s.</p>
+<p>Replace the <code>192.168.xx.xxx</code> with your IP&rsquo;s.</p>
 
 <p>To test, disconnect the VPN and verify that the selected devices to use the VPN,
 are not available to connect, re-connect the VPN and check the IP using any of this sites:</p>
