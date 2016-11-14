@@ -91,16 +91,21 @@
 <p><strong>killswitch</strong> helps to find the active interfaces and creates a
 <code>.killswitch.pf.conf</code> file.</p>
 
-<p>The current version is very simple it requires to specify the VPN endpoint IP
-<code>-ip</code> and it can also load the generated rules by specifying option <code>-e</code></p>
+<p>The current version requires to specify the VPN endpoint IP
+<code>-ip</code> and it can also load the generated rules by specifying option <code>-e</code>.</p>
+
+<p>If using the <code>-i</code> option it will print the current active interfaces, MAC
+address, IP and the current external public IP address.</p>
 
 <pre><code class="language-sh">$ killswitch -h
 Usage of killswitch:
   -e Enable
         Enable load the pf rules
+  -i Info
+        Info print active interfaces and public IP address
   -ip IPv4
         VPN peer IPv4
-  -v    Print version: 0.1.0
+  -v    Print version: 0.2.0
 </code></pre>
 
 <p>If using option <code>-e</code> <a href="https://en.wikipedia.org/wiki/Sudo">sudo</a> may be required:</p>

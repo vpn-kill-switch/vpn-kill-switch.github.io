@@ -33,16 +33,21 @@
 &lt;p&gt;&lt;strong&gt;killswitch&lt;/strong&gt; helps to find the active interfaces and creates a
 &lt;code&gt;.killswitch.pf.conf&lt;/code&gt; file.&lt;/p&gt;
 
-&lt;p&gt;The current version is very simple it requires to specify the VPN endpoint IP
-&lt;code&gt;-ip&lt;/code&gt; and it can also load the generated rules by specifying option &lt;code&gt;-e&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The current version requires to specify the VPN endpoint IP
+&lt;code&gt;-ip&lt;/code&gt; and it can also load the generated rules by specifying option &lt;code&gt;-e&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If using the &lt;code&gt;-i&lt;/code&gt; option it will print the current active interfaces, MAC
+address, IP and the current external public IP address.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ killswitch -h
 Usage of killswitch:
   -e Enable
         Enable load the pf rules
+  -i Info
+        Info print active interfaces and public IP address
   -ip IPv4
         VPN peer IPv4
-  -v    Print version: 0.1.0
+  -v    Print version: 0.2.0
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;If using option &lt;code&gt;-e&lt;/code&gt; &lt;a href=&#34;https://en.wikipedia.org/wiki/Sudo&#34;&gt;sudo&lt;/a&gt; may be required:&lt;/p&gt;
