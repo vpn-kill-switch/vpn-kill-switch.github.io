@@ -110,13 +110,12 @@ vpn_ip = &quot;1.2.3.4&quot;
 set block-policy drop
 set ruleset-optimization basic
 set skip on lo0
-block out all
-block in all
-antispoof for $int_en1 inet
-antispoof for $vpn_utun1 inet
-pass out on $int_en1 inet proto icmp all icmp-type 8 code 0
-pass out on $int_en1 proto {tcp, udp} from any to $vpn_ip
-pass out on $vpn_utun1
+block all
+pass on $int_en1 proto udp to 224.0.0.251 port 5353
+pass on $int_en1 proto udp from any port 67 to any port 68
+pass on $int_en1 inet proto icmp all icmp-type 8 code 0
+pass on $int_en1 proto {tcp, udp} from any to $vpn_ip
+pass on $vpn_utun1 all
 </code></pre>
 
 <p>The first 3 lines need to be changed/adjusted based on the running system.</p>
