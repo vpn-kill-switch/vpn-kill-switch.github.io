@@ -113,6 +113,7 @@ set ruleset-optimization basic
 set skip on lo0
 
 block all
+block out inet6
 
 # dns
 pass quick proto {tcp, udp} from any to any port 53 keep state
