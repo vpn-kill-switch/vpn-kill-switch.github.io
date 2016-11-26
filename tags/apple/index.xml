@@ -61,7 +61,7 @@ pass from any to 255.255.255.255 keep state
 pass from 255.255.255.255 to any keep state
 
 # Allow multicast
-pass protp udp from any to 224.0.0.0/4 keep state
+pass proto udp from any to 224.0.0.0/4 keep state
 pass proto udp from 224.0.0.0/4 to any keep state
 
 # Allow ping
