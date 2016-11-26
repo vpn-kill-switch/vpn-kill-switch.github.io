@@ -112,6 +112,10 @@ pass from 255.255.255.255 to any keep state
 pass protp udp from any to 224.0.0.0/4 keep state
 pass proto udp from 224.0.0.0/4 to any keep state
 
+# Allow ping
+pass on $int_en1 inet proto icmp all icmp-type 8 code 0 keep state
+
+# use only the vpn
 pass on $int_en1 proto {tcp, udp} from any to $vpn_ip
 pass on $vpn_utun1 all
 &lt;/code&gt;&lt;/pre&gt;
