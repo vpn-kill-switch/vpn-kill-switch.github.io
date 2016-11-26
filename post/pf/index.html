@@ -115,7 +115,7 @@ set skip on lo0
 block all
 
 # dns
-pass quick proto udp from any to any port 53 keep state
+pass quick proto {tcp, udp} from any to any port 53 keep state
 
 # Allow broadcasts on internal interface
 pass from any to 255.255.255.255 keep state
