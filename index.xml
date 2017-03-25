@@ -18,7 +18,7 @@
       <guid>https://vpn-kill-switch.com/post/how-it-works/</guid>
       <description>
 
-&lt;p&gt;&lt;strong&gt;killswitch&lt;/strong&gt;, in a nutshell, once enable will allow only traffic within the
+&lt;p&gt;&lt;strong&gt;killswitch&lt;/strong&gt;, in a nutshell, once enabled, it will allow only traffic within the
 VPN, if the &lt;a href=&#34;https://vpn-kill-switch.com/about&#34;&gt;VPN goes down&lt;/a&gt; or it crashes, your traffic / IP address will not
 become exposed.&lt;/p&gt;
 
