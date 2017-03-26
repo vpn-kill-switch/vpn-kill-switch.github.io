@@ -40,7 +40,7 @@ active interfaces, create and load pf rules.&lt;/p&gt;
 &lt;p&gt;Example of a &lt;code&gt;killswitch.pf.conf&lt;/code&gt; configuration file:&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;The file can be creted on the user $HOME directory and have any name.&lt;/p&gt;
+&lt;p&gt;The file can be created on the user $HOME directory and have any name.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;int_en1 = &amp;quot;en1&amp;quot;
@@ -161,7 +161,7 @@ default            192.168.1.1        UGSc            7        2     en1
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;If you know your current gateway (for example &lt;code&gt;192.168.1.1&lt;/code&gt;) this also can give
-the current endpoint ip (&lt;code&gt;93.15.82.54&lt;/code&gt;) in this case:&lt;/p&gt;
+the current endpoint IP (&lt;code&gt;93.15.82.54&lt;/code&gt;) in this case:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ netstat -rn | grep 192.168.1.1
 default            192.168.1.1        UGScI          52        0     en1

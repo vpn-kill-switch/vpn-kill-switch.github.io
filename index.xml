@@ -25,7 +25,7 @@ become exposed.&lt;/p&gt;
 &lt;p&gt;Before enabling the kill switch &lt;code&gt;killswitch -e&lt;/code&gt; the VPN needs to be up and running.&lt;/p&gt;
 
 &lt;p&gt;By just running &lt;code&gt;killswitch&lt;/code&gt;, information about the existing interfaces and
-public IP address is printed, example:&lt;/p&gt;
+public IP address is printed. Example:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;$ killswitch
 Interface  MAC address         IP
@@ -56,7 +56,7 @@ No VPN interface found, verify VPN is connected
 
 &lt;h1 id=&#34;enable&#34;&gt;Enable&lt;/h1&gt;
 
-&lt;p&gt;Once VPN is un and running, run:&lt;/p&gt;
+&lt;p&gt;Once VPN is up and running, run:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ sudo killswitch -e
 &lt;/code&gt;&lt;/pre&gt;
@@ -158,7 +158,7 @@ active interfaces, create and load pf rules.&lt;/p&gt;
 &lt;p&gt;Example of a &lt;code&gt;killswitch.pf.conf&lt;/code&gt; configuration file:&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;The file can be creted on the user $HOME directory and have any name.&lt;/p&gt;
+&lt;p&gt;The file can be created on the user $HOME directory and have any name.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;int_en1 = &amp;quot;en1&amp;quot;
@@ -279,7 +279,7 @@ default            192.168.1.1        UGSc            7        2     en1
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;If you know your current gateway (for example &lt;code&gt;192.168.1.1&lt;/code&gt;) this also can give
-the current endpoint ip (&lt;code&gt;93.15.82.54&lt;/code&gt;) in this case:&lt;/p&gt;
+the current endpoint IP (&lt;code&gt;93.15.82.54&lt;/code&gt;) in this case:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ netstat -rn | grep 192.168.1.1
 default            192.168.1.1        UGScI          52        0     en1
