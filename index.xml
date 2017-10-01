@@ -2,13 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VPN kill switch</title>
-    <link>https://vpn-kill-switch.com/index.xml</link>
+    <link>https://vpn-kill-switch.com/</link>
     <description>Recent content on VPN kill switch</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright> </copyright>
     <lastBuildDate>Sat, 25 Mar 2017 13:18:30 +0100</lastBuildDate>
-    <atom:link href="https://vpn-kill-switch.com/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://vpn-kill-switch.com/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>How it works</title>
@@ -16,67 +18,10 @@
       <pubDate>Sat, 25 Mar 2017 13:18:30 +0100</pubDate>
       
       <guid>https://vpn-kill-switch.com/post/how-it-works/</guid>
-      <description>
-
-&lt;p&gt;&lt;strong&gt;killswitch&lt;/strong&gt;, in a nutshell, once enabled, it will allow only traffic within the
-VPN, if the &lt;a href=&#34;https://vpn-kill-switch.com/about&#34;&gt;VPN goes down&lt;/a&gt; or it crashes, your traffic / IP address will not
-become exposed.&lt;/p&gt;
-
-&lt;p&gt;Before enabling the kill switch &lt;code&gt;killswitch -e&lt;/code&gt; the VPN needs to be up and running.&lt;/p&gt;
-
-&lt;p&gt;By just running &lt;code&gt;killswitch&lt;/code&gt;, information about the existing interfaces and
-public IP address is printed. Example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;$ killswitch
-Interface  MAC address         IP
-en1        ac:21:37:b1:81:b4   192.168.1.50
-
-Public IP address: 91.171.85.85
-
-No VPN interface found, verify VPN is connecte
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;dns-leak&#34;&gt;DNS leak&lt;/h1&gt;
-
-&lt;p&gt;Every time &lt;code&gt;killswitch&lt;/code&gt; is executed, it will try to obtain the public IP address
-via DNS or HTTP, if they differ both IP&amp;rsquo;s will be printed, example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;$ killswitch
-Interface  MAC address         IP
-en1        ac:21:37:b1:81:b4   192.168.1.50
-
-DNS leaking:
-Public IP address (DNS): 5.255.241.137
-Public IP address (WWW): 91.171.85.85
-
-No VPN interface found, verify VPN is connected
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;See more: &lt;a href=&#34;https://en.wikipedia.org/wiki/DNS_leak&#34;&gt;https://en.wikipedia.org/wiki/DNS_leak&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;enable&#34;&gt;Enable&lt;/h1&gt;
-
-&lt;p&gt;Once VPN is up and running, run:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo killswitch -e
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;disable&#34;&gt;Disable&lt;/h1&gt;
-
-&lt;p&gt;If VPN crashes or disconnects you may not be available to reconnect again unless you disable the kill switch.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt; Before disabling the kill switch, ensure you don&amp;rsquo;t have any application &amp;ldquo;P2P&amp;rdquo; running that may compromise your traffic/IP.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo killswitch -d
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This will load the default firewall rules defined on &lt;code&gt;/etc/pf.conf&lt;/code&gt;. After doing this you may try to connect again the VPN and re-enable the kill switch.&lt;/p&gt;
-
-&lt;p&gt;Custom rules may be loaded by using something like:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ sudo pfctl -Fa -f /etc/custom-pf.conf
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>killswitch, in a nutshell, once enabled, it will allow only traffic within the VPN, if the VPN goes down or it crashes, your traffic / IP address will not become exposed.
+Before enabling the kill switch killswitch -e the VPN needs to be up and running.
+By just running killswitch, information about the existing interfaces and public IP address is printed. Example:
+$ killswitch Interface MAC address IP en1 ac:21:37:b1:81:b4 192.</description>
     </item>
     
     <item>
@@ -85,46 +30,12 @@ No VPN interface found, verify VPN is connected
       <pubDate>Sat, 12 Nov 2016 21:15:48 +0100</pubDate>
       
       <guid>https://vpn-kill-switch.com/post/killswitch/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;killswitch&lt;/strong&gt; a CLI tool for creating &amp;amp; loading pf rules.&lt;/p&gt;
-
-&lt;p&gt;To install on Mac OS X:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ brew tap vpn-kill-switch/killswitch
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Next:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ brew install killswitch
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Download from &lt;a href=&#34;https://dl.bintray.com/nbari/killswitch/&#34;&gt;https://dl.bintray.com/nbari/killswitch/&lt;/a&gt; or compile from source: &lt;a href=&#34;https://github.com/vpn-kill-switch/killswitch&#34;&gt;https://github.com/vpn-kill-switch/killswitch&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;killswitch&lt;/strong&gt; helps to find the active interfaces and creates a
-&lt;code&gt;.killswitch.pf.conf&lt;/code&gt; file.&lt;/p&gt;
-
-&lt;p&gt;Automatically will try to find your VPN peer endpoint IP or you can specify the
-VPN endpoint IP by using the option &lt;code&gt;-ip&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ killswitch -h
-Usage of killswitch:
-  -d Disable
-      Disable load /etc/pf.conf rules
-  -e Enable
-        Enable load the pf rules
-  -ip IPv4
-        VPN peer IPv4
-  -p Print
-        Print the pf rules
-  -v    Print version
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If using option &lt;code&gt;-e&lt;/code&gt; or &lt;code&gt;-d&lt;/code&gt; &lt;a href=&#34;https://en.wikipedia.org/wiki/Sudo&#34;&gt;sudo&lt;/a&gt; may be required:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo killswitch -e
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This will load the autogenerated rules located at &lt;code&gt;~/.killswitch.pf.conf&lt;/code&gt;&lt;/p&gt;
-</description>
+      <description>killswitch a CLI tool for creating &amp;amp; loading pf rules.
+To install on Mac OS X:
+$ brew tap vpn-kill-switch/killswitch  Next:
+$ brew install killswitch  Download from https://dl.bintray.com/nbari/killswitch/ or compile from source: https://github.com/vpn-kill-switch/killswitch
+killswitch helps to find the active interfaces and creates a .killswitch.pf.conf file.
+Automatically will try to find your VPN peer endpoint IP or you can specify the VPN endpoint IP by using the option -ip</description>
     </item>
     
     <item>
@@ -133,159 +44,9 @@ Usage of killswitch:
       <pubDate>Sat, 12 Nov 2016 16:24:58 +0100</pubDate>
       
       <guid>https://vpn-kill-switch.com/post/pf/</guid>
-      <description>
-
-&lt;p&gt;For &lt;a href=&#34;https://apple.com/mac/&#34;&gt;Mac OS X&lt;/a&gt; &amp;amp;
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Berkeley_Software_Distribution&#34;&gt;BSD&lt;/a&gt;
-users &lt;a href=&#34;https://www.freebsd.org/doc/handbook/firewalls-pf.html&#34;&gt;PF&lt;/a&gt;
-can be the best option to create a &lt;strong&gt;kill switch&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;PF (Packet Filter, also written pf) is a BSD licensed stateful packet filter,
-a central piece of software for firewalling. It is comparable to netfilter
-(iptables), ipfw and ipfilter. PF was developed for OpenBSD, but has been ported
-to many other operating systems. &lt;a href=&#34;https://en.wikipedia.org/wiki/PF_(firewall&#34;&gt;https://en.wikipedia.org/wiki/PF_(firewall&lt;/a&gt;)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;To create a &lt;strong&gt;kill switch&lt;/strong&gt; using PF, a &lt;a href=&#34;https://www.openbsd.org/faq/pf/&#34;&gt;configuration file&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;TL;DR
-&lt;a href=&#34;https://vpn-kill-switch.com/post/killswitch/&#34;&gt;killswitch&lt;/a&gt; is a CLI command that can help finding the
-active interfaces, create and load pf rules.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Example of a &lt;code&gt;killswitch.pf.conf&lt;/code&gt; configuration file:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;The file can be created on the user $HOME directory and have any name.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;int_en1 = &amp;quot;en1&amp;quot;
-vpn_utun1 = &amp;quot;utun1&amp;quot;
-vpn_ip = &amp;quot;1.2.3.4&amp;quot;
-
-set block-policy drop
-set ruleset-optimization basic
-set skip on lo0
-
-block all
-block out inet6
-
-# dns
-pass quick proto {tcp, udp} from any to any port 53 keep state
-
-# Allow broadcasts on internal interface
-pass from any to 255.255.255.255 keep state
-pass from 255.255.255.255 to any keep state
-
-# Allow multicast
-pass proto udp from any to 224.0.0.0/4 keep state
-pass proto udp from 224.0.0.0/4 to any keep state
-
-# Allow ping
-pass on $int_en1 inet proto icmp all icmp-type 8 code 0 keep state
-
-# Allow dhcp
-pass on $int_en1 proto {tcp,udp} from any port 67:68 to any port 67:68 keep state
-
-# use only the vpn
-pass on $int_en1 proto {tcp, udp} from any to $vpn_ip
-pass on $vpn_utun1 all
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The first 3 lines need to be changed/adjusted based on the running system.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;int_en1 = &amp;quot;en1&amp;quot;     # active interface
-vpn_utun1 = &amp;quot;utun1&amp;quot; # VPN interface
-vpn_ip = &amp;quot;1.2.3.4&amp;quot;  # VPN peer IP
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After editing the &lt;code&gt;killswitch.pf.conf&lt;/code&gt; file, the PF rules can be loaded by
-running:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo pfctl -Fa -f ~/killswitch.pf.conf -e
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To disable:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo pfctl -d
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To load your system defaults (no kill switch)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo pfctl -Fa -f /etc/pf.conf -e
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In some cases where the VPN peer IP is random, the VPN needs to be connected
-first and later load the &lt;strong&gt;kill switch&lt;/strong&gt; PF rules, otherwise wont be possible to
-connect.&lt;/p&gt;
-
-&lt;h1 id=&#34;active-interface&#34;&gt;active interface&lt;/h1&gt;
-
-&lt;p&gt;In this example &lt;code&gt;int_en1&lt;/code&gt; is the active interface (WiFi) to find the
-active interfaces run the following command within a terminal:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ route get 0.0.0.0 2&amp;gt;/dev/null | awk &#39;/interface: / {print $2}&#39;;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;or&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ifconfig | pcregrep -M -o &#39;^[^\t:]+:([^\n]|\n\t)*status: active&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This commands can give more information:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ networksetup -listnetworkserviceorder
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ scutil --dns
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;vpn-interface&#34;&gt;VPN interface&lt;/h1&gt;
-
-&lt;p&gt;After connecting to the VPN, by running the command &lt;code&gt;ifconfig -a&lt;/code&gt; and
-searching for &lt;code&gt;POINTOPOINT&lt;/code&gt;, could help to find the interface used by the VPN:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ifconfig -a | grep -i POINTOPOINT
-gif0: flags=8010&amp;lt;POINTOPOINT,MULTICAST&amp;gt; mtu 1280
-utun0: flags=8051&amp;lt;UP,POINTOPOINT,RUNNING,MULTICAST&amp;gt; mtu 2000
-utun1: flags=8051&amp;lt;UP,POINTOPOINT,RUNNING,MULTICAST&amp;gt; mtu 1500
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In this example there are 3 interfaces, but in many cases only 1 will be active
-and with an assigned &lt;a href=&#34;https://en.wikipedia.org/wiki/IPv4&#34;&gt;IPv4&lt;/a&gt;, by using the
-command &lt;code&gt;ifconfig &amp;lt;interface_name&amp;gt;&amp;gt;&lt;/code&gt; this can be found, example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ifconfig utun1
-utun1: flags=8051&amp;lt;UP,POINTOPOINT,RUNNING,MULTICAST&amp;gt; mtu 1500
-	inet 172.21.21.233 --&amp;gt; 172.21.21.233 netmask 0xfffffe00
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;vpn-peer-ip&#34;&gt;VPN PEER IP&lt;/h1&gt;
-
-&lt;p&gt;This is the IP of the VPN server providing the service, after connecting to the
-VPN many apps display this IP:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://vpn-kill-switch.com/img/peerIP.jpg&#34; alt=&#34;peerIP&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Once knowing the active interface this can be double checked by using the
-command &lt;code&gt;netstat&lt;/code&gt;, example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ netstat -rna -f inet | grep en1
-default            192.168.1.1        UGSc            7        2     en1
-143.255.56.99/32   192.168.1.1        UGSc            2        0     en1
-143.255.56.99      192.168.1.1        UGHWIi          2     5239     en1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you know your current gateway (for example &lt;code&gt;192.168.1.1&lt;/code&gt;) this also can give
-the current endpoint IP (&lt;code&gt;93.15.82.54&lt;/code&gt;) in this case:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ netstat -rn | grep 192.168.1.1
-default            192.168.1.1        UGScI          52        0     en1
-93.15.82.54        192.168.1.1        UGHS            4  1112367     en1
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>For Mac OS X &amp;amp; BSD users PF can be the best option to create a kill switch.
+ PF (Packet Filter, also written pf) is a BSD licensed stateful packet filter, a central piece of software for firewalling. It is comparable to netfilter (iptables), ipfw and ipfilter. PF was developed for OpenBSD, but has been ported to many other operating systems. https://en.wikipedia.org/wiki/PF_(firewall)
+ To create a kill switch using PF, a configuration file</description>
     </item>
     
     <item>
@@ -294,107 +55,22 @@ default            192.168.1.1        UGScI          52        0     en1
       <pubDate>Sat, 12 Nov 2016 15:19:37 +0100</pubDate>
       
       <guid>https://vpn-kill-switch.com/about/</guid>
-      <description>
-
-&lt;h1 id=&#34;what-is-a-vpn-kill-switch&#34;&gt;What is a VPN kill switch?&lt;/h1&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;A kill switch, also known as an emergency stop or e-stop, is a safety mechanism used to shut off a device or machinery in an emergency situation in which it cannot be shut down in the usual manner. &lt;a href=&#34;https://en.wikipedia.org/wiki/Kill_switch&#34;&gt;https://en.wikipedia.org/wiki/Kill_switch&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;A &lt;strong&gt;VPN Kill-Switch&lt;/strong&gt; is a critical piece of your VPN security solution. Also
-known as an Internet Kill Switch, this will make sure that your true
-&lt;a href=&#34;http://checkip.amazonaws.com/&#34;&gt;IP address&lt;/a&gt; is never exposed online in the
-event of a dropped VPN connection.&lt;/p&gt;
-
-&lt;p&gt;Some VPN providers offer this as feature that in theory automatically &amp;ldquo;kills&amp;rdquo;
-your internet connection if the VPN fails or get disconnected, but if the
-application crashes or quit unexpectedly, high are the changes that the
-&lt;strong&gt;kill-switch&lt;/strong&gt; will never be used and therefore your traffic / IP address become
-exposed.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://vpn-kill-switch.com/img/ipvanish-vpn-quit-unexpectedly.png&#34; alt=&#34;ipvanish&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;There are many VPN providers the difference is mainly the price, but when it
-comes to security it is better to use a &lt;strong&gt;kill switch&lt;/strong&gt; at an operating system
-level rather than depending on an APP that eventually may fail or crash leaving
-you vulnerable.&lt;/p&gt;
-
-&lt;p&gt;The goal of this site is to share best practices about how to implement,
-create a &lt;strong&gt;kill switch&lt;/strong&gt; not depending on any VPN provider/application so it
-doesn&amp;rsquo;t mater if the VPN drops the connection or crashes you will not be vulnerable.&lt;/p&gt;
-</description>
+      <description>What is a VPN kill switch?  A kill switch, also known as an emergency stop or e-stop, is a safety mechanism used to shut off a device or machinery in an emergency situation in which it cannot be shut down in the usual manner. https://en.wikipedia.org/wiki/Kill_switch
+ A VPN Kill-Switch is a critical piece of your VPN security solution. Also known as an Internet Kill Switch, this will make sure that your true IP address is never exposed online in the event of a dropped VPN connection.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://vpn-kill-switch.com/README/</link>
+      <link>https://vpn-kill-switch.com/readme/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://vpn-kill-switch.com/README/</guid>
-      <description>
-
-&lt;h1 id=&#34;how-to-contribute&#34;&gt;How to contribute&lt;/h1&gt;
-
-&lt;p&gt;You can contribute in multiple ways, submiting code, creating and update
-existing posts, etc.&lt;/p&gt;
-
-&lt;h2 id=&#34;creating-updating-posts&#34;&gt;Creating &amp;amp; updating posts&lt;/h2&gt;
-
-&lt;p&gt;You can clone the full site by doing this:&lt;/p&gt;
-
-&lt;p&gt;First install HUGO: &lt;a href=&#34;https://gohugo.io/overview/installing/&#34;&gt;https://gohugo.io/overview/installing/&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ brew update &amp;amp;&amp;amp; brew install hugo
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Clone the template repository:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ git clone git@github.com:vpn-kill-switch/template.git $HOME/vpn-kill-switch.com
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Clone the content for the site as a submodule:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd $HOME/vpn-kill-switch.com
-$ git submodule add -b master git@github.com:vpn-kill-switch/content.git content
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Symlink the static directory so images can be displayed:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd $HOME/vpn-kill-switch.com
-$ ln -s content/static .
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Start the server:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd $HOME/vpn-kill-switch.com
-$ hugo -w server
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Create a post:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo new post/example.md
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Preview:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ open http://localhost:1313/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;pull-request&#34;&gt;pull request&lt;/h2&gt;
-
-&lt;p&gt;After adding your post or making any changes to the content repository please
-create a pull request, more info about how to do this can be found here:
-&lt;a href=&#34;https://help.github.com/articles/creating-a-pull-request/&#34;&gt;https://help.github.com/articles/creating-a-pull-request/&lt;/a&gt; Please create a
-pull-request for all your changes in order to review them and&lt;/p&gt;
-
-&lt;h1 id=&#34;contribute-with-code&#34;&gt;Contribute with code&lt;/h1&gt;
-
-&lt;p&gt;The best for now is to create a repository in
-your own account on Github and notify via an
-&lt;a href=&#34;https://github.com/vpn-kill-switch/vpn-kill-switch.github.io/issues&#34;&gt;issue&lt;/a&gt;
-when it is ready.&lt;/p&gt;
-</description>
+      <guid>https://vpn-kill-switch.com/readme/</guid>
+      <description>How to contribute You can contribute in multiple ways, submiting code, creating and update existing posts, etc.
+Creating &amp;amp; updating posts You can clone the full site by doing this:
+First install HUGO: https://gohugo.io/overview/installing/
+$ brew update &amp;amp;&amp;amp; brew install hugo  Clone the template repository:
+$ git clone git@github.com:vpn-kill-switch/template.git $HOME/vpn-kill-switch.com  Clone the content for the site as a submodule:
+$ cd $HOME/vpn-kill-switch.com $ git submodule add -b master git@github.</description>
     </item>
     
   </channel>
