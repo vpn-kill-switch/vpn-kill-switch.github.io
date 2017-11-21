@@ -543,6 +543,7 @@ td {
     border-style: solid;
     padding: 10px 15px;
     border-width: 1px 0 0 0;
+    text-align: center;
 }
 
 tr>td {

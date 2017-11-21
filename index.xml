@@ -26,6 +26,17 @@ $ killswitch Interface MAC address IP en1 ac:21:37:b1:81:b4 192.</description>
     
     <item>
       <title>Install killswitch</title>
+      <link>https://vpn-kill-switch.com/mac/</link>
+      <pubDate>Sat, 12 Nov 2016 21:15:48 +0100</pubDate>
+      
+      <guid>https://vpn-kill-switch.com/mac/</guid>
+      <description>To install on macOS:
+$ brew tap vpn-kill-switch/killswitch  Next:
+$ brew install killswitch  </description>
+    </item>
+    
+    <item>
+      <title>Install killswitch</title>
       <link>https://vpn-kill-switch.com/post/killswitch/</link>
       <pubDate>Sat, 12 Nov 2016 21:15:48 +0100</pubDate>
       
