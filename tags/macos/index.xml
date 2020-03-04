@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Macos on VPN kill switch</title>
+    <title>macOS on VPN kill switch</title>
     <link>https://vpn-kill-switch.com/tags/macos/</link>
-    <description>Recent content in Macos on VPN kill switch</description>
+    <description>Recent content in macOS on VPN kill switch</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright> </copyright>
     <lastBuildDate>Sat, 12 Nov 2016 16:24:58 +0100</lastBuildDate>
     
 	<atom:link href="https://vpn-kill-switch.com/tags/macos/index.xml" rel="self" type="application/rss+xml" />

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VPN kill switch</title>
@@ -6,7 +6,6 @@
     <description>Recent content on VPN kill switch</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright> </copyright>
     <lastBuildDate>Sat, 25 Mar 2017 13:18:30 +0100</lastBuildDate>
     
 	<atom:link href="https://vpn-kill-switch.com/index.xml" rel="self" type="application/rss+xml" />
@@ -31,8 +30,7 @@ $ killswitch Interface MAC address IP en1 ac:21:37:b1:81:b4 192.</description>
       
       <guid>https://vpn-kill-switch.com/mac/</guid>
       <description>To install on macOS:
-$ brew tap vpn-kill-switch/killswitch  Next:
-$ brew install killswitch  </description>
+$ brew install killswitch </description>
     </item>
     
     <item>
@@ -80,8 +78,8 @@ Automatically will try to find your VPN peer endpoint IP or you can specify the 
 Creating &amp;amp; updating posts You can clone the full site by doing this:
 First install HUGO: https://gohugo.io/overview/installing/
 $ brew update &amp;amp;&amp;amp; brew install hugo  Clone the template repository:
-$ git clone git@github.com:vpn-kill-switch/template.git $HOME/vpn-kill-switch.com  Clone the content for the site as a submodule:
-$ cd $HOME/vpn-kill-switch.com $ git submodule add -b master git@github.</description>
+$ git clone git@github.com:vpn-kill-switch/template.git $HOME/vpn-kill-switch.com Clone the content for the site as a submodule:
+$ cd $HOME/vpn-kill-switch.com $ git submodule add -b master git@github.com:vpn-kill-switch/content.git content Symlink the static directory so images can be displayed:</description>
     </item>
     
   </channel>

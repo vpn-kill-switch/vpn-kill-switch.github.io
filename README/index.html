@@ -7,7 +7,7 @@
         <meta name="author" content="VPN kill switch">
         <meta name="description" content="Block outgoing traffic when VPN connection fails or crashes">
         <meta name="keywords" content="vpn, killswitch, network">
-        <meta name="generator" content="Hugo 0.31" />
+        <meta name="generator" content="Hugo 0.64.0" />
         <title> &middot; VPN kill switch</title>
         <link rel="apple-touch-icon" sizes="57x57" href="https://vpn-kill-switch.com/images/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="https://vpn-kill-switch.com/images/apple-icon-60x60.png">
@@ -64,64 +64,36 @@
                     </h2>
                 </header>
                 <section id="post-body">
-                    
-
-<h1 id="how-to-contribute">How to contribute</h1>
-
+                    <h1 id="how-to-contribute">How to contribute</h1>
 <p>You can contribute in multiple ways, submiting code, creating and update
 existing posts, etc.</p>
-
-<h2 id="creating-updating-posts">Creating &amp; updating posts</h2>
-
+<h2 id="creating--updating-posts">Creating &amp; updating posts</h2>
 <p>You can clone the full site by doing this:</p>
-
 <p>First install HUGO: <a href="https://gohugo.io/overview/installing/">https://gohugo.io/overview/installing/</a></p>
-
 <pre><code>$ brew update &amp;&amp; brew install hugo
 </code></pre>
-
 <p>Clone the template repository:</p>
-
-<pre><code class="language-sh">$ git clone git@github.com:vpn-kill-switch/template.git $HOME/vpn-kill-switch.com
-</code></pre>
-
-<p>Clone the content for the site as a submodule:</p>
-
-<pre><code class="language-sh">$ cd $HOME/vpn-kill-switch.com
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git clone git@github.com:vpn-kill-switch/template.git $HOME/vpn-kill-switch.com
+</code></pre></div><p>Clone the content for the site as a submodule:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cd $HOME/vpn-kill-switch.com
 $ git submodule add -b master git@github.com:vpn-kill-switch/content.git content
-</code></pre>
-
-<p>Symlink the static directory so images can be displayed:</p>
-
-<pre><code class="language-sh">$ cd $HOME/vpn-kill-switch.com
+</code></pre></div><p>Symlink the static directory so images can be displayed:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cd $HOME/vpn-kill-switch.com
 $ ln -s content/static .
-</code></pre>
-
-<p>Start the server:</p>
-
-<pre><code class="language-sh">$ cd $HOME/vpn-kill-switch.com
+</code></pre></div><p>Start the server:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cd $HOME/vpn-kill-switch.com
 $ hugo -w server
-</code></pre>
-
-<p>Create a post:</p>
-
+</code></pre></div><p>Create a post:</p>
 <pre><code>$ hugo new post/example.md
 </code></pre>
-
 <p>Preview:</p>
-
-<pre><code class="language-sh">$ open http://localhost:1313/
-</code></pre>
-
-<h2 id="pull-request">pull request</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ open http://localhost:1313/
+</code></pre></div><h2 id="pull-request">pull request</h2>
 <p>After adding your post or making any changes to the content repository please
 create a pull request, more info about how to do this can be found here:
 <a href="https://help.github.com/articles/creating-a-pull-request/">https://help.github.com/articles/creating-a-pull-request/</a> Please create a
 pull-request for all your changes in order to review them and</p>
-
 <h1 id="contribute-with-code">Contribute with code</h1>
-
 <p>The best for now is to create a repository in
 your own account on Github and notify via an
 <a href="https://github.com/vpn-kill-switch/vpn-kill-switch.github.io/issues">issue</a>
@@ -150,7 +122,7 @@ when it is ready.</p>
             </footer>
 
             <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -183,6 +155,34 @@ when it is ready.</p>
     
         
         <li>
+            <a href="https://vpn-kill-switch.com/post/">Posts</a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://vpn-kill-switch.com/">VPN kill switch</a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://vpn-kill-switch.com/tags/brew/">brew</a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://vpn-kill-switch.com/tags/cli/">cli</a>
+        </li>
+        
+   
+    
+        
+        <li>
             <a href="https://vpn-kill-switch.com/post/killswitch/">Install killswitch</a>
         </li>
         
@@ -190,52 +190,28 @@ when it is ready.</p>
     
         
         <li>
-            <a href="https://vpn-kill-switch.com/post/pf/">PF macOS &amp; BSD</a>
-        </li>
-        
-   
-    
-        
-   
-    
-        
-        <li>
-            <a href="https://vpn-kill-switch.com/readme/"></a>
+            <a href="https://vpn-kill-switch.com/tags/">Tags</a>
         </li>
         
    
     
         
         <li>
-            <a href="https://vpn-kill-switch.com/tags/apple/">Apple</a>
+            <a href="https://vpn-kill-switch.com/tags/tools/">tools</a>
         </li>
         
    
     
         
         <li>
-            <a href="https://vpn-kill-switch.com/tags/brew/">Brew</a>
+            <a href="https://vpn-kill-switch.com/tags/apple/">apple</a>
         </li>
         
    
     
         
         <li>
-            <a href="https://vpn-kill-switch.com/tags/bsd/">Bsd</a>
-        </li>
-        
-   
-    
-        
-        <li>
-            <a href="https://vpn-kill-switch.com/tags/cli/">Cli</a>
-        </li>
-        
-   
-    
-        
-        <li>
-            <a href="https://vpn-kill-switch.com/tags/macos/">Macos</a>
+            <a href="https://vpn-kill-switch.com/tags/bsd/">BSD</a>
         </li>
         
    
@@ -273,14 +249,17 @@ when it is ready.</p>
 
 
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-79517076-8', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-79517076-8', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 

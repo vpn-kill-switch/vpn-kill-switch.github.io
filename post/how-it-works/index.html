@@ -7,7 +7,7 @@
         <meta name="author" content="VPN kill switch">
         <meta name="description" content="Block outgoing traffic when VPN connection fails or crashes">
         <meta name="keywords" content="vpn, killswitch, network">
-        <meta name="generator" content="Hugo 0.31" />
+        <meta name="generator" content="Hugo 0.64.0" />
         <title>How it works &middot; VPN kill switch</title>
         <link rel="apple-touch-icon" sizes="57x57" href="https://vpn-kill-switch.com/images/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="https://vpn-kill-switch.com/images/apple-icon-60x60.png">
@@ -64,32 +64,23 @@
                     </h2>
                 </header>
                 <section id="post-body">
-                    
-
-<p><strong>killswitch</strong>, in a nutshell, once enabled, it will allow only traffic within the
+                    <p><strong>killswitch</strong>, in a nutshell, once enabled, it will allow only traffic within the
 VPN, if the <a href="/about">VPN goes down</a> or it crashes, your traffic / IP address will not
 become exposed.</p>
-
 <p>Before enabling the kill switch <code>killswitch -e</code> the VPN needs to be up and running.</p>
-
 <p>By just running <code>killswitch</code>, information about the existing interfaces and
 public IP address is printed. Example:</p>
-
-<pre><code class="language-html">$ killswitch
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">$ killswitch
 Interface  MAC address         IP
 en1        ac:21:37:b1:81:b4   192.168.1.50
 
 Public IP address: 91.171.85.85
 
 No VPN interface found, verify VPN is connecte
-</code></pre>
-
-<h1 id="dns-leak">DNS leak</h1>
-
+</code></pre></div><h1 id="dns-leak">DNS leak</h1>
 <p>Every time <code>killswitch</code> is executed, it will try to obtain the public IP address
 via DNS or HTTP, if they differ both IP&rsquo;s will be printed, example:</p>
-
-<pre><code class="language-html">$ killswitch
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">$ killswitch
 Interface  MAC address         IP
 en1        ac:21:37:b1:81:b4   192.168.1.50
 
@@ -98,33 +89,20 @@ Public IP address (DNS): 5.255.241.137
 Public IP address (WWW): 91.171.85.85
 
 No VPN interface found, verify VPN is connected
-</code></pre>
-
-<p>See more: <a href="https://en.wikipedia.org/wiki/DNS_leak">https://en.wikipedia.org/wiki/DNS_leak</a></p>
-
+</code></pre></div><p>See more: <a href="https://en.wikipedia.org/wiki/DNS_leak">https://en.wikipedia.org/wiki/DNS_leak</a></p>
 <h1 id="enable">Enable</h1>
-
 <p>Once VPN is up and running, run:</p>
-
 <pre><code>$ sudo killswitch -e
 </code></pre>
-
 <h1 id="disable">Disable</h1>
-
 <p>If VPN crashes or disconnects you may not be available to reconnect again unless you disable the kill switch.</p>
-
 <p><strong>WARNING</strong> Before disabling the kill switch, ensure you don&rsquo;t have any application &ldquo;P2P&rdquo; running that may compromise your traffic/IP.</p>
-
 <pre><code>$ sudo killswitch -d
 </code></pre>
-
 <p>This will load the default firewall rules defined on <code>/etc/pf.conf</code>. After doing this you may try to connect again the VPN and re-enable the kill switch.</p>
-
 <p>Custom rules may be loaded by using something like:</p>
-
-<pre><code class="language-sh">$ sudo pfctl -Fa -f /etc/custom-pf.conf
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo pfctl -Fa -f /etc/custom-pf.conf
+</code></pre></div>
                 </section>
             </article>
             <footer id="post-meta" class="clearfix">
@@ -148,7 +126,7 @@ No VPN interface found, verify VPN is connected
             </footer>
 
             <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -181,6 +159,34 @@ No VPN interface found, verify VPN is connected
     
         
         <li>
+            <a href="https://vpn-kill-switch.com/post/">Posts</a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://vpn-kill-switch.com/">VPN kill switch</a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://vpn-kill-switch.com/tags/brew/">brew</a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://vpn-kill-switch.com/tags/cli/">cli</a>
+        </li>
+        
+   
+    
+        
+        <li>
             <a href="https://vpn-kill-switch.com/post/killswitch/">Install killswitch</a>
         </li>
         
@@ -188,52 +194,28 @@ No VPN interface found, verify VPN is connected
     
         
         <li>
-            <a href="https://vpn-kill-switch.com/post/pf/">PF macOS &amp; BSD</a>
-        </li>
-        
-   
-    
-        
-   
-    
-        
-        <li>
-            <a href="https://vpn-kill-switch.com/readme/"></a>
+            <a href="https://vpn-kill-switch.com/tags/">Tags</a>
         </li>
         
    
     
         
         <li>
-            <a href="https://vpn-kill-switch.com/tags/apple/">Apple</a>
+            <a href="https://vpn-kill-switch.com/tags/tools/">tools</a>
         </li>
         
    
     
         
         <li>
-            <a href="https://vpn-kill-switch.com/tags/brew/">Brew</a>
+            <a href="https://vpn-kill-switch.com/tags/apple/">apple</a>
         </li>
         
    
     
         
         <li>
-            <a href="https://vpn-kill-switch.com/tags/bsd/">Bsd</a>
-        </li>
-        
-   
-    
-        
-        <li>
-            <a href="https://vpn-kill-switch.com/tags/cli/">Cli</a>
-        </li>
-        
-   
-    
-        
-        <li>
-            <a href="https://vpn-kill-switch.com/tags/macos/">Macos</a>
+            <a href="https://vpn-kill-switch.com/tags/bsd/">BSD</a>
         </li>
         
    
@@ -271,14 +253,17 @@ No VPN interface found, verify VPN is connected
 
 
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-79517076-8', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-79517076-8', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 
