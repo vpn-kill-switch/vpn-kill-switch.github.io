@@ -13,11 +13,6 @@
   </url>
   
   <url>
-    <loc>https://vpn-kill-switch.com/</loc>
-    <lastmod>2017-03-25T13:18:30+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://vpn-kill-switch.com/tags/brew/</loc>
     <lastmod>2016-11-12T21:15:48+01:00</lastmod>
   </url>
@@ -44,6 +39,11 @@
   
   <url>
     <loc>https://vpn-kill-switch.com/tags/tools/</loc>
+    <lastmod>2016-11-12T21:15:48+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vpn-kill-switch.com/</loc>
     <lastmod>2016-11-12T21:15:48+01:00</lastmod>
   </url>
   

@@ -19,10 +19,9 @@
       <guid>https://vpn-kill-switch.com/post/killswitch/</guid>
       <description>killswitch a CLI tool for creating &amp;amp; loading pf rules.
 To install on Mac OS X:
-$ brew tap vpn-kill-switch/killswitch  Next:
-$ brew install killswitch  Download from https://dl.bintray.com/nbari/killswitch/ or compile from source: https://github.com/vpn-kill-switch/killswitch
-killswitch helps to find the active interfaces and creates a .killswitch.pf.conf file.
-Automatically will try to find your VPN peer endpoint IP or you can specify the VPN endpoint IP by using the option -ip</description>
+$ brew install killswitch  killswitch helps to find the active interfaces and creates a .killswitch.pf.conf file.
+Automatically will try to find your VPN peer endpoint IP or you can specify the VPN endpoint IP by using the option -ip
+$ killswitch -h Usage of killswitch: -d Disable Disable load /etc/pf.conf rules -e Enable Enable load the pf rules -ip IPv4 VPN peer IPv4 -p Print Print the pf rules -v Print version If using option -e or -d sudo may be required:</description>
     </item>
     
   </channel>
